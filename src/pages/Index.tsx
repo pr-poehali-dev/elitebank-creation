@@ -7,9 +7,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const benefitsAnim = useScrollAnimation();
+  const aboutAnim = useScrollAnimation();
+  const servicesAnim = useScrollAnimation();
+  const faqAnim = useScrollAnimation();
+  const contactsAnim = useScrollAnimation();
+  const accountAnim = useScrollAnimation();
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
@@ -81,8 +88,8 @@ const Index = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all hover-scale bg-gradient-to-br from-white to-slate-50">
+          <div ref={benefitsAnim.ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className={`border-none shadow-lg hover:shadow-xl transition-all hover-scale bg-gradient-to-br from-white to-slate-50 fade-in-up ${benefitsAnim.isVisible ? 'visible' : ''}`}>
               <CardHeader>
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#8B2E3E] to-[#FFD700] flex items-center justify-center mb-4">
                   <Icon name="Shield" className="text-white" size={32} />
@@ -93,7 +100,7 @@ const Index = () => {
                 </CardDescription>
               </CardHeader>
             </Card>
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all hover-scale bg-gradient-to-br from-white to-amber-50">
+            <Card className={`border-none shadow-lg hover:shadow-xl transition-all hover-scale bg-gradient-to-br from-white to-amber-50 fade-in-up stagger-1 ${benefitsAnim.isVisible ? 'visible' : ''}`}>
               <CardHeader>
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#FFD700] to-[#8B2E3E] flex items-center justify-center mb-4">
                   <Icon name="TrendingUp" className="text-white" size={32} />
@@ -104,7 +111,7 @@ const Index = () => {
                 </CardDescription>
               </CardHeader>
             </Card>
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all hover-scale bg-gradient-to-br from-white to-rose-50">
+            <Card className={`border-none shadow-lg hover:shadow-xl transition-all hover-scale bg-gradient-to-br from-white to-rose-50 fade-in-up stagger-2 ${benefitsAnim.isVisible ? 'visible' : ''}`}>
               <CardHeader>
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#A52A40] to-[#FFD700] flex items-center justify-center mb-4">
                   <Icon name="Headphones" className="text-white" size={32} />
@@ -121,12 +128,12 @@ const Index = () => {
 
       <section id="about" className="py-20 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent">О EliteBank</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+          <div ref={aboutAnim.ref} className="max-w-3xl mx-auto text-center">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent fade-in-up ${aboutAnim.isVisible ? 'visible' : ''}`}>О EliteBank</h2>
+            <p className={`text-lg text-muted-foreground mb-8 fade-in-up stagger-1 ${aboutAnim.isVisible ? 'visible' : ''}`}>
               Мы создали банк нового поколения, где технологии служат людям. С 2015 года мы помогаем клиентам достигать финансовых целей, предлагая инновационные решения и персональный сервис.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 fade-in-up stagger-2 ${aboutAnim.isVisible ? 'visible' : ''}`}>
               <div className="text-center p-6 rounded-2xl bg-white shadow-lg hover-scale">
                 <div className="text-4xl font-bold bg-gradient-to-r from-[#8B2E3E] to-[#A52A40] bg-clip-text text-transparent mb-2">500K+</div>
                 <div className="text-muted-foreground font-medium">Активных клиентов</div>
@@ -145,10 +152,10 @@ const Index = () => {
       </section>
 
       <section id="services" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent">Наши услуги</h2>
+        <div ref={servicesAnim.ref} className="container mx-auto px-4">
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent fade-in-up ${servicesAnim.isVisible ? 'visible' : ''}`}>Наши услуги</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-slate-50">
+            <Card className={`hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-slate-50 fade-in-up ${servicesAnim.isVisible ? 'visible' : ''}`}>
               <CardHeader>
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#8B2E3E] to-[#FFD700] flex items-center justify-center mb-4">
                   <Icon name="CreditCard" className="text-white" size={28} />
@@ -174,7 +181,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-amber-50">
+            <Card className={`hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-amber-50 fade-in-up stagger-1 ${servicesAnim.isVisible ? 'visible' : ''}`}>
               <CardHeader>
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#FFD700] to-[#8B2E3E] flex items-center justify-center mb-4">
                   <Icon name="PiggyBank" className="text-white" size={28} />
@@ -200,7 +207,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-rose-50">
+            <Card className={`hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-rose-50 fade-in-up stagger-2 ${servicesAnim.isVisible ? 'visible' : ''}`}>
               <CardHeader>
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#A52A40] to-[#FFD700] flex items-center justify-center mb-4">
                   <Icon name="Banknote" className="text-white" size={28} />
@@ -226,7 +233,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-slate-50">
+            <Card className={`hover:shadow-xl transition-all hover-scale border-none shadow-md bg-gradient-to-br from-white to-slate-50 fade-in-up stagger-3 ${servicesAnim.isVisible ? 'visible' : ''}`}>
               <CardHeader>
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#8B2E3E] via-[#A52A40] to-[#FFD700] flex items-center justify-center mb-4">
                   <Icon name="ArrowLeftRight" className="text-white" size={28} />
@@ -256,9 +263,9 @@ const Index = () => {
       </section>
 
       <section id="faq" className="py-20 bg-gradient-to-b from-slate-50 to-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent">Частые вопросы</h2>
-          <div className="max-w-3xl mx-auto">
+        <div ref={faqAnim.ref} className="container mx-auto px-4">
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent fade-in-up ${faqAnim.isVisible ? 'visible' : ''}`}>Частые вопросы</h2>
+          <div className={`max-w-3xl mx-auto fade-in-up stagger-1 ${faqAnim.isVisible ? 'visible' : ''}`}>
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="border-none rounded-xl px-6 bg-white shadow-md hover:shadow-lg transition-shadow">
                 <AccordionTrigger className="text-left hover:no-underline">
@@ -310,9 +317,9 @@ const Index = () => {
       </section>
 
       <section id="contacts" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent">Контакты</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div ref={contactsAnim.ref} className="container mx-auto px-4">
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent fade-in-up ${contactsAnim.isVisible ? 'visible' : ''}`}>Контакты</h2>
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto fade-in-up stagger-1 ${contactsAnim.isVisible ? 'visible' : ''}`}>
             <div>
               <Card className="border-none shadow-xl">
                 <CardHeader>
@@ -390,9 +397,9 @@ const Index = () => {
 
       <section id="account" className="py-20 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-md mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent">Личный кабинет</h2>
-            <Tabs defaultValue="login" className="w-full">
+          <div ref={accountAnim.ref} className="max-w-md mx-auto">
+            <h2 className={`text-4xl font-bold text-center mb-8 bg-gradient-to-r from-[#8B2E3E] to-[#FFD700] bg-clip-text text-transparent fade-in-up ${accountAnim.isVisible ? 'visible' : ''}`}>Личный кабинет</h2>
+            <Tabs defaultValue="login" className={`w-full fade-in-up stagger-1 ${accountAnim.isVisible ? 'visible' : ''}`}>
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="login">Вход</TabsTrigger>
                 <TabsTrigger value="register">Регистрация</TabsTrigger>
